@@ -1,0 +1,126 @@
+#!/bin/sh
+
+. /lib/netifd/netifd-proto.sh
+
+attempts=$1
+timeout1=$2
+timeout2=$3
+config="$4"
+device_name="$5"
+proto_cmd="$6"
+
+### Exported with "proto_export"
+included_routes="$INCLUDED_ROUTES"
+
+proto_pid=
+
+trap_func() {
+	if [ -n "$proto_pid" -a -e "/proc/${proto_pid}" ]; then
+		kill $proto_pid
+	fi
+	exit 0
+}
+
+run_proto_func() {
+	local _ret_code=1
+
+	eval "${proto_cmd} &"
+	_ret_code=$?
+
+	if [ $_ret_code -eq 0 ]; then
+		proto_pid=$!
+	fi
+	return $_ret_code
+}
+
+check_net_device_func() {
+	ip link list dev "$device_name" > /dev/null 2>&1
+	[ $? -eq 0 ] && return 0
+	return 1
+}
+
+main() {
+	local _i _start=0 _device_state=0 _ip4addrs= _ip6addrs= _attempts_counter=0 _timeout1_counter=0 _timeout2_counter=0
+	trap "trap_func" 2 3 15
+	while :
+	do
+		if [ -n "$proto_pid" -a -e "/proc/${proto_pid}" ]; then
+			_attempts_counter=0
+			_timeout1_counter=0
+			_timeout2_counter=0
+
+			if [ $_device_state -eq 0 ] && check_net_device_func; then
+				_device_state=1
+				proto_init_update "$device_name" 1
+
+				_ip4addrs=$(ip -4 addr list dev "$device_name" 2> /dev/null | awk '/inet/{if($2 !~ /^(127|0)/) printf $2 " "}')
+				_ip6addrs=$(ip -6 addr list dev "$device_name" 2> /dev/null | awk '/inet/{if($2 !~ /^(::|fe|fc|fd|ff|3f)/) printf $2 " "}')
+
+				for _i in $_ip4addrs; do
+					proto_add_ipv4_address "${_i%%/*}" "${_i##*/}" "" "${_i%%/*}"
+					proto_add_ipv4_route "${_i%%/*}" "${_i##*/}"
+				done
+
+				for _i in $_ip6addrs; do
+					proto_add_ipv6_address "${_i%%/*}" "${_i##*/}"
+					proto_add_ipv6_route "${_i%%/*}" "${_i##*/}"
+				done
+
+				for _i in $included_routes; do
+					case "$_i" in
+						*:*/*)
+							proto_add_ipv6_route "${_i%%/*}" "${_i##*/}"
+							;;
+						*.*/*)
+							proto_add_ipv4_route "${_i%%/*}" "${_i##*/}"
+							;;
+						*:*)
+							proto_add_ipv6_route "${_i%%/*}" "128"
+							;;
+						*.*)
+							proto_add_ipv4_route "${_i%%/*}" "32"
+							;;
+					esac
+				done
+
+				proto_send_update "$config"
+			fi
+		else
+			if [ $_device_state -eq 1 ]; then
+				_device_state=0
+				proto_init_update "$device_name" 0
+				proto_send_update "$config"
+			fi
+
+			proto_pid=
+
+			if [ $_start -eq 0 ]; then
+				run_proto_func
+				_start=1
+				_attempts_counter=$(($_attempts_counter + 1))
+			else
+				if [ $_attempts_counter -ge $attempts ]; then
+					if [ $_timeout2_counter -ge $timeout2 ]; then
+						run_proto_func
+						_timeout2_counter=0
+					else
+						_timeout2_counter=$(($_timeout2_counter + 1))
+					fi
+				else
+					if [ $_timeout1_counter -ge $timeout1 ]; then
+						run_proto_func
+						_timeout1_counter=0
+						_attempts_counter=$(($_attempts_counter + 1))
+					else
+						_timeout1_counter=$(($_timeout1_counter + 1))
+					fi
+				fi
+			fi
+		fi
+		sleep 1
+	done
+}
+
+main
+
+exit 0

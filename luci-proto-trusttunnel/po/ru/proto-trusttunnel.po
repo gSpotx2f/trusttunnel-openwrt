@@ -1,0 +1,556 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1142
+msgid "Addresses"
+msgstr "Адреса"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1225
+msgid "Anti DPI"
+msgstr "Анти-DPI"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1114
+msgid "Cannot parse configuration: %s"
+msgstr "Не удалось обработать конфигурацию: %s"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1219
+msgid "Client random"
+msgstr "Клиентский random"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1321
+msgid ""
+"Comma-separated list of ports considered \"scannable\" for domain extraction "
+"and exclusion matching. Supports individual ports and ranges, e.g. "
+"<code>443,80,8080:8090,853</code>. If empty, the default list is used."
+msgstr ""
+"Список портов, разделенных запятыми, которые считаются доступными для "
+"сканирования (в целях извлечения доменов и сопоставления с правилами "
+"исключения). Поддерживаются как отдельные порты, так и диапазоны, например "
+"<code>443,80,8080:8090,853</code>. Если не задан, используется список по "
+"умолчанию."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1214
+msgid "Custom SNI"
+msgstr "Кастомный SNI"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1215
+msgid ""
+"Custom SNI value for TLS handshake. If set, this value is used as the TLS "
+"SNI instead of the hostname."
+msgstr ""
+"Кастомное значение SNI для TLS хэндшейка. Если задано, то это значение "
+"используется как TLS SNI вместо имени хоста."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1327
+msgid ""
+"DNS resolvers for queries routed through VPN. If empty, AdGuard DNS "
+"unfiltered is used. Supported one of the following kinds:<br> - "
+"<code>8.8.8.8:53</code> - %s<br> - <code>tcp://8.8.8.8:53</code> - %s<br> - "
+"<code>tls://1.1.1.1</code> - %s<br> - <code>https://dns.adguard.com/dns-"
+"query</code> - %s<br> - <code>quic://dns.adguard.com:8853</code> - %s<br> - "
+"<code>sdns://...</code> - %s (see <a href=\"https://dnscrypt.info/stamps-"
+"specifications\" target=\"_blank\">https://dnscrypt.info/stamps-"
+"specifications</a>)"
+msgstr ""
+"DNS резолверы для запросов маршрутизируемых через VPN. Если не задано, то "
+"используется AdGuard DNS unfiltered. Поддерживается один из следующих типов: "
+"<br> - <code>8.8.8.8:53</code> - %s<br> - <code>tcp://8.8.8.8:53</code> - "
+"%s<br> - <code>tls://1.1.1.1</code> - %s<br> - <code>https://dns.adguard.com/"
+"dns-query</code> - %s<br> - <code>quic://dns.adguard.com:8853</code> - "
+"%s<br> - <code>sdns://...</code> - %s (смотрите <a href=\"https://dnscrypt."
+"info/stamps-specifications\" target=\"_blank\">https://dnscrypt.info/stamps-"
+"specifications</a>)"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1336
+msgid "DNS stamp"
+msgstr "DNS штамп"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1326
+msgid "DNS upstreams"
+msgstr "DNS апстримы"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1336
+msgid "DNS-over-HTTPS"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1336
+msgid "DNS-over-QUIC"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1335
+msgid "DNS-over-TLS"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1395
+msgid "Decode"
+msgstr "Декодировать"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1392
+msgid "Decode URI"
+msgstr "Декодировать URI"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1393
+msgid ""
+"Decode the inserted URI into TOML configuration without importing settings."
+msgstr "Декодировать вставленный URI в TOML конфигурацию без импорта настроек."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1289
+msgid "Defines client connections routing policy."
+msgstr "Определяет политику маршрутизации клиентских соединений."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1297
+msgid ""
+"Domains and addresses which should be routed in a special manner.<br> "
+"Supported syntax: <dl> <dt><b>domain name</b></dt> <dd>- if starts with "
+"<code>*.</code>, any subdomain of the domain will be matched including www-"
+"subdomain, but not the domain itself (e.g., <code>*.example.com</code> will "
+"match <code>sub.example.com</code>, <code>sub.sub.example.com</code>, "
+"<code>www.example.com</code>, but not <code>example.com</code>)</dd> <dd>- "
+"if starts with <code>www.</code> or it is just a domain name, the domain "
+"itself and its www-subdomain will be matched (e.g. <code>example.com</code> "
+"and <code>www.example.com</code> will match <code>example.com</code> "
+"<code>www.example.com</code>, but not <code>sub.example.com</code>)</dd> "
+"<dt><b>IP address</b></dt> <i>recognized formats are:</i> <dd>- "
+"[IPv6Address]:port</dd> <dd>- [IPv6Address]</dd> <dd>- IPv6Address</dd> "
+"<dd>- IPv4Address:port</dd> <dd>- IPv4Address</dd> <i>if port is not "
+"specified, any port will be matched</i> <dt><b>CIDR range</b></dt> "
+"<i>recognized formats are:</i> <dd>- IPv4Address/mask</dd> <dd>- IPv6Address/"
+"mask</dd> </dl>"
+msgstr ""
+"Домены и адреса, которые должны маршрутизироваться особым образом. "
+"<br>Поддерживаемый синтаксис: <dl> <dt><b>доменное имя</b></dt> <dd>- если "
+"начинается с <code>*.</code>, будет соответствовать любой субдомен домена, "
+"но не сам домен (например, <code>*.example.com</code> соответствует "
+"<code>sub.example.com</code>, <code>sub.sub.example.com</code>, <code>www."
+"example.com</code>, но не соответствует <code>example.com</code>)</dd> <dd>- "
+"если начинается с <code>www.</code> или это просто доменное имя, сам домен и "
+"его www-субдомен будут соответствовать (например, <code>example.com</code> и "
+"<code>www.example.com</code> соответствуют <code>example.com</code> "
+"<code>www.example.com</code>, но не соответствуют <code>sub.example.com</"
+"code>)</dd> <dt><b>IP адрес</b></dt> <i>допустимые форматы:</i> <dd>- "
+"[IPv6Address]:port</dd> <dd>- [IPv6Address]</dd> <dd>- IPv6Address</dd> "
+"<dd>- IPv4Address:port</dd> <dd>- IPv4Address</dd> <i>если порт не указан, "
+"то соответствует любой порт</i> <dt><b>CIDR диапазон</b></dt> <i>допустимые "
+"форматы:</i> <dd>- IPv4Address/mask</dd> <dd>- IPv6Address/mask</dd> </dl>"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1143
+msgid ""
+"Endpoint addresses (IP:port or hostname:port). The exact address is selected "
+"by the pinger. Hostnames are resolved via DNS at connect time."
+msgstr ""
+"Адреса эндпоинта (IP:порт или хост:порт). Конкретный адрес выбирается "
+"пингером. Разрешение имен хостов через DNS происходит в момент подключения."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1177
+msgid "Endpoint certificate in PEM format"
+msgstr "Сертификат эндпоинта в PEM формате"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1161
+msgid "Endpoint host name, used for TLS session establishment."
+msgstr "Имя хоста эндпоинта, используется для установления TLS сесии."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1296
+msgid "Exclusions"
+msgstr "Исключения"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1354
+msgid "Exclusions TCP early ACK enabled"
+msgstr "Включение раннего подтверждения (early ACK) TCP для исключений"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1358
+msgid "Exclusions preresolve enabled"
+msgstr "Включение предварительного резолвинга для исключений"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1364
+msgid "Exclusions preresolve max queries"
+msgstr "Макс. кол-во запросов предварительного резолвинга исключений"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1320
+msgid "Exclusions scannable ports"
+msgstr "Сканируемые порты для исключений"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:103
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:109
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:114
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:121
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:156
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:212
+msgid "Expecting:"
+msgstr "Ожидается:"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1285
+msgid ""
+"Further information about TrustTunnel at <a href=\"https://trusttunnel.org/"
+"\" target=\"_blank\">trusttunnel.org</a> and <a href=\"https://github.com/"
+"TrustTunnel/TrustTunnelClient/blob/master/trusttunnel/README."
+"md#configuration-reference\" target=\"_blank\">GitHub</a>."
+msgstr ""
+"Дополнительная информация о TrustTunnel на сайте <a href=\"https://"
+"trusttunnel.org/\" target=\"_blank\">trusttunnel.org</a> и <a href=\"https://"
+"github.com/TrustTunnel/TrustTunnelClient/blob/master/trusttunnel/README."
+"md#configuration-reference\" target=\"_blank\">GitHub</a>."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1380
+msgid ""
+"Here, you can import TrustTunnel client settings from a deeplink URI "
+"(<code>tt://...</code>) or the contents of a TOML configuration file."
+msgstr ""
+"Здесь можно импортировать настройки клиента TrustTunnel из URI "
+"(<code>tt://...</code>) или содержимого конфигурационного файла TOML."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1160
+msgid "Hostname"
+msgstr "Имя хоста"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:156
+msgid "IPAddress, IPAddress:port, IPAddress/mask, domain.name, *.domain.name"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1229
+msgid "IPv6"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1178
+msgid ""
+"If not specified, the endpoint certificate is verified using the system "
+"storage."
+msgstr ""
+"Если не задан, сертификат конечной точки проверяется с использованием "
+"системного хранилища."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1379
+msgid "Import configuration"
+msgstr "Импорт конфигурации"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1398
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1400
+msgid "Import settings"
+msgstr "Импортировать настройки"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1236
+msgid "Included routes"
+msgstr "Включенные маршруты"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1254
+msgid "Interface dependency"
+msgstr "Зависимость от интерфейса"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1226
+msgid "Is anti-DPI measures should be enabled."
+msgstr "Включать ли противодействие DPI."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1349
+msgid "Killswitch allow ports"
+msgstr "Разрешённые порты для killswitch"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1343
+msgid "Killswitch enabled"
+msgstr "Включить killswitch"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1371
+msgid "Logging level"
+msgstr "Уровень логирования"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1263
+msgid "MTU"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1264
+msgid "Maximum Transmission Unit of tunnel interface."
+msgstr ""
+"Максимальный размер передаваемого блока данных (MTU) туннельного интерфейса."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1365
+msgid "Maximum number of exclusion domains to pre-resolve per cycle."
+msgstr ""
+"Макс. кол-во доменов из исключений для предварительного резолвинга за цикл."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1255
+msgid ""
+"Name of the network interface used for connections made by the TrustTunnel "
+"client."
+msgstr ""
+"Имя сетевого интерфейса, используемого для соединений, устанавливаемых "
+"клиентом TrustTunnel."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1006
+msgid "Overwrite the current settings with the imported configuration?"
+msgstr "Перезаписать текущие настройки импортированной конфигурацией?"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1154
+msgid "Password"
+msgstr "Пароль"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1155
+msgid "Password for authorization."
+msgstr "Пароль для авторизации."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1386
+msgid "Paste supplied TrustTunnel URI (tt://...) or TOML configuration…"
+msgstr "Вставьте URI TrustTunnel (tt://...) или конфигурацию TOML…"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1197
+msgid "Post quantum group"
+msgstr "Постквантовая криптография"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1167
+msgid "Protocol to be used to communicate with the endpoint."
+msgstr "Протокол, используемый для взаимодействия с эндпоинтом."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1291
+msgid ""
+"Route through a VPN endpoint all connections except ones which destinations "
+"are in exclusions."
+msgstr ""
+"Направлять через VPN эндпоинт все соединения, за исключением тех, хосты "
+"назначения которых указаны в списке исключений."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1293
+msgid ""
+"Route through a VPN endpoint only the connections which destinations are in "
+"exclusions."
+msgstr ""
+"Направлять через VPN эндпоинт только те соединения, хосты назначения которых "
+"указаны в списке исключений."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1237
+msgid ""
+"Routes in CIDR notation to set to the virtual interface. If external routing "
+"(PBR, MWAN, etc.) is used, must be empty."
+msgstr ""
+"Маршруты в нотации CIDR, назначаемые виртуальному интерфейсу. Если "
+"используется внешняя маршрутизация (PBR, MWAN и т.д.), то должен быть пустым."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1174
+msgid ""
+"Skip the endpoint certificate verification? That is, any certificate is "
+"accepted if this setting is enabled."
+msgstr ""
+"Пропустить проверку сертификата эндпоинта? То есть, если этот параметр "
+"задан, принимается любой сертификат."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1173
+msgid "Skip verification"
+msgstr "Пропустить верификацию"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1383
+msgid ""
+"Supports a deeplink TrustTunnel URI (tt://...) or TOML configuration file "
+"content."
+msgstr ""
+"Поддерживается TrustTunnel URI (tt://...) или содержимое конфигурационного "
+"файла TOML."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1269
+msgid "TCP receive window size"
+msgstr "Размер окна приема TCP"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1270
+msgid ""
+"TCP receive window size in bytes. 0 uses optimized default (256 KB). Adjust "
+"only for constrained environments."
+msgstr ""
+"Размер окна приема TCP в байтах. Значение 0 соответствует оптимизированному "
+"значению по умолчанию (256 КБ). Изменяйте этот параметр только в условиях "
+"ограниченных ресурсов."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1276
+msgid "TCP send buffer size"
+msgstr "Размер буфера отправки TCP"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1277
+msgid ""
+"TCP send buffer size in bytes. 0 uses optimized default (256 KB). Adjust "
+"only for constrained environments."
+msgstr ""
+"Размер буфера отправки TCP в байтах. Значение 0 соответствует "
+"оптимизированному значению по умолчанию (256 КБ). Изменяйте этот параметр "
+"только в условиях ограниченных ресурсов."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1204
+msgid "TLS ClientHello fingerprint to mimic."
+msgstr "Отпечаток TLS ClientHello для мимикрии."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1220
+msgid "TLS client random prefix and mask (hex string, format: prefix[/mask])."
+msgstr ""
+"Случайный клиентский TLS префикс и маска (hex строка, формат: префикс[/"
+"маска])."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1203
+msgid "TLS profile"
+msgstr "Профиль TLS"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:61
+msgid "This does not look like a valid PEM file"
+msgstr "Это не похоже на корректный PEM-файл"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:956
+msgid "TrustTunnel"
+msgstr ""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1285
+msgid "TrustTunnel Settings"
+msgstr "Настройки TrustTunnel"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1382
+msgid "URI or TOML configuration"
+msgstr "URI или конфигурация TOML"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1166
+msgid "Upstream protocol"
+msgstr "Upstream протокол"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1148
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1149
+msgid "Username for authorization."
+msgstr "Имя пользователя для авторизации."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1288
+msgid "VPN mode"
+msgstr "Режим VPN"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1344
+msgid ""
+"When disabled, all connection requests are routed directly to target hosts "
+"in case connection to VPN endpoint is lost. This helps not to break an "
+"Internet connection if user has poor connectivity to an endpoint. When "
+"enabled, incoming connection requests which should be routed through an "
+"endpoint will not be routed directly in that case."
+msgstr ""
+"Если отключено, то при потере связи с эндпоинтом VPN все запросы на "
+"установление соединения направляются напрямую к целевым хостам. Это "
+"позволяет не прерывать интернет-соединение, если у пользователя плохое "
+"качество связи с эндпоинтом. Если включено, то в подобной ситуации запросы, "
+"которые должны были бы проходить через эндпоинт, не будут перенаправляться "
+"напрямую."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1359
+msgid ""
+"When enabled, DNS-resolvable exclusions are pre-resolved in the background "
+"after the exclusion list is updated. This populates the suspects cache so "
+"that connections to excluded hosts are routed correctly without waiting for "
+"the first DNS response."
+msgstr ""
+"Если включено, то исключения, требующие DNS-резолвинга, предварительно "
+"резолвятся в фоновом режиме после обновления списка исключений. Это "
+"заполняет кэш потенциальных совпадений, благодаря чему соединения с хостами "
+"из списка исключений маршрутизируются корректно - без ожидания первого DNS-"
+"ответа."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1198
+msgid ""
+"When enabled, a post-quantum group may be used for key exchange in TLS "
+"handshakes initiated by the VPN client."
+msgstr ""
+"Если включено, то для обмена ключами в ходе TLS-рукопожатий, инициируемых "
+"VPN-клиентом, может использоваться постквантовая криптография."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1355
+msgid ""
+"When enabled, all TCP connections to scannable ports are initially routed "
+"through a fake upstream to read the TLS SNI before making any real "
+"connection. This ensures site exclusions work correctly when a secure DNS "
+"resolver is configured outside of AdGuard VPN, or when the exclusion list "
+"contains wildcard entries (e.g. <code>*.example.com</code>)."
+msgstr ""
+"Если включено, то все TCP-соединения с портами, доступными для сканирования, "
+"сначала направляются через фиктивный апстрим для считывания TLS SNI, перед "
+"установкой любого реального соединения. Это гарантирует корректную работу "
+"исключений для сайтов в случаях, когда защищенный DNS-резолвер настроен вне "
+"AdGuard VPN или когда список исключений содержит записи с подстановками "
+"(например, <code>*.example.com</code>)."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1350
+msgid ""
+"When the kill switch is enabled, allow inbound connections to these local "
+"ports."
+msgstr ""
+"При включенном killswitch разрешить входящие соединения для этих локальных "
+"портов."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1230
+msgid "Whether IPv6 traffic can be routed through the endpoint."
+msgstr "Может ли трафик IPv6 маршрутизироваться через эндпоинт."
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:832
+msgid "configuration is empty"
+msgstr "конфигурация пуста"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1290
+msgid "general"
+msgstr "общий"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:121
+msgid "hexstring or hexstring/hexmask"
+msgstr "hex-строка или hex-строка/hex-маска"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1205
+msgid "no mimicry"
+msgstr "без мимикрии"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1335
+msgid "plain DNS"
+msgstr "обычный DNS"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1335
+msgid "plain DNS over TCP"
+msgstr "обычный DNS через TCP"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:842
+msgid "required setting \"%s%s\" is missing"
+msgstr "отсутствует обязательный параметр \"%s%s\""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1292
+msgid "selective"
+msgstr "выборочный"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:866
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:891
+msgid "setting \"%s%s\" is invalid"
+msgstr "неправильный параметр \"%s%s\""
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:883
+msgid "setting \"%s%s\" must be a valid ufloat value"
+msgstr "параметр \"%s%s\" должен быть корректным значением типа ufloat"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:876
+msgid "setting \"%s%s\" must be a valid uinteger value"
+msgstr "параметр \"%s%s\" должен быть корректным значением типа uinteger"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:853
+msgid "setting \"%s%s\" must contain one of the following values: <b>%s</b>"
+msgstr "параметр \"%s%s\" должен содержать одно из след. значений: <b>%s</b>"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:212
+msgid "supported DNS server string format"
+msgstr "поддерживаемый формат строки DNS сервера"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:109
+msgid "valid port number (0 <= port <= 65535)"
+msgstr "правильный номер порта (0 <= порт <= 65535)"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:103
+msgid "valid port range (port1 <= port2)"
+msgstr "правильный диапазон портов (порт1 <= порт2)"
+
+#: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:114
+msgid ""
+"valid port, comma-separated list of ports or port range (port,port,port1-"
+"port2)"
+msgstr ""
+"правильный порт, список портов разделенных запятыми или диапазон портов "
+"(порт,порт,порт1-порт2)"

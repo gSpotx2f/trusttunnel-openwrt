@@ -1,0 +1,15 @@
+{
+	"luci-proto-trusttunnel": {
+		"description": "Grant access to luci-proto-trusttunnel procedures",
+		"read": {
+			"ubus": {
+				"luci.trusttunnel": [ "getCertificates" ]
+			}
+		},
+		"write": {
+			"ubus": {
+				"luci.trusttunnel": [ "setCertificates" ]
+			}
+		}
+	}
+}

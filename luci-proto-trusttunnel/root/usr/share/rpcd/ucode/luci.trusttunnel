@@ -1,0 +1,75 @@
+'use strict';
+
+import { dirname, mkdir, readfile, stat, writefile } from 'fs';
+
+const interfaceRegexp = /^[a-zA-Z0-9_]+$/;
+const ttConfDir       = '/etc/trusttunnel';
+const paths           = {
+	endpointCertificate: ttConfDir + '/endpoint-cert-%s.pem',
+};
+
+function readFile(path) {
+	let s = stat(path);
+	return (s?.type == 'file') ? trim(readfile(path) ?? '') : null;
+}
+
+function writeFile(path, data) {
+	const dir = dirname(path);
+	return (stat(dir)?.type == 'directory' || mkdir(dir)) && (data !== null ? writefile(path, data) == length(data) : false);
+}
+
+function isValidIface(ifname) {
+	return ifname && match(ifname, interfaceRegexp);
+}
+
+const methods = {
+	list: {
+		call: function() {
+			return {
+				getCertificates: { interface: 'interface' },
+				setCertificates: {
+					interface          : 'interface',
+					endpointCertificate: 'endpointCertificate',
+				}
+			};
+		}
+	},
+
+	getCertificates: {
+		args: { interface: 'interface' },
+		call: function(req) {
+			let iface = req.args?.interface;
+			if (!isValidIface(iface)) {
+				return;
+			}
+			let result = {};
+			for (let k in paths) {
+				result[k] = readFile(sprintf(paths[k], iface));
+			}
+			return result;
+		}
+	},
+
+	setCertificates: {
+		args: {
+			interface          : 'interface',
+			endpointCertificate: 'endpointCertificate',
+		},
+		call: function(req) {
+			let iface = req.args?.interface;
+			if (!isValidIface(iface)) {
+				return;
+			}
+			let result = false;
+			for (let k in paths) {
+				if (req.args?.[k]) {
+					let val = trim(req.args[k]);
+					result = writeFile(sprintf(paths[k], iface), val);
+				}
+			}
+			return { result: result };
+		}
+	}
+};
+
+return { 'luci.trusttunnel': methods };
