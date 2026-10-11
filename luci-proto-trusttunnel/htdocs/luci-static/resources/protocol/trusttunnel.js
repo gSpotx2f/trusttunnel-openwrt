@@ -1032,6 +1032,7 @@ return network.registerProtocol('trusttunnel', {
 		// password
 		o = s.taboption('general', form.Value, 'password', _('Password'),
 			_('Password for authorization.'));
+		o.password = true;
 		o.rmempty  = false;
 		o.datatype = 'string';
 
