@@ -10,47 +10,47 @@ TrustTunnel client support via the OpenWrt network interface.
 
 2. Then, place the `trusttunnel_client` file in the `/usr/bin` directory (`/usr/bin/trusttunnel_client`) and run `chmod +x /usr/bin/trusttunnel_client`.
 
-3. Install the `trusttunnel-netifd-script` and `luci-proto-trusttunnel` packages.
+3. Install the **trusttunnel-netifd-script** and **luci-proto-trusttunnel** packages.
 
 (!) Restarting the network service (`service network restart`) will drop all current connections and restart all network interfaces!
 
 **OpenWrt >= 25.12:**
 
     apk update
-    wget --no-check-certificate -O /tmp/trusttunnel-netifd-script-0.1.0-r2.apk https://github.com/gSpotx2f/packages-openwrt/raw/master/25.12/trusttunnel-netifd-script-0.1.0-r2.apk
-    apk --allow-untrusted add /tmp/trusttunnel-netifd-script-0.1.0-r2.apk
-    rm /tmp/trusttunnel-netifd-script-0.1.0-r2.apk
+    wget --no-check-certificate -O /tmp/trusttunnel-netifd-script-0.1.0-r3.apk https://github.com/gSpotx2f/packages-openwrt/raw/master/25.12/trusttunnel-netifd-script-0.1.0-r3.apk
+    apk --allow-untrusted add /tmp/trusttunnel-netifd-script-0.1.0-r3.apk
+    rm /tmp/trusttunnel-netifd-script-0.1.0-r3.apk
     service network restart
 
-    wget --no-check-certificate -O /tmp/luci-proto-trusttunnel-0.1.0-r2.apk https://github.com/gSpotx2f/packages-openwrt/raw/master/25.12/luci-proto-trusttunnel-0.1.0-r2.apk
-    apk --allow-untrusted add /tmp/luci-proto-trusttunnel-0.1.0-r2.apk
-    rm /tmp/luci-proto-trusttunnel-0.1.0-r2.apk
+    wget --no-check-certificate -O /tmp/luci-proto-trusttunnel-0.1.0-r3.apk https://github.com/gSpotx2f/packages-openwrt/raw/master/25.12/luci-proto-trusttunnel-0.1.0-r3.apk
+    apk --allow-untrusted add /tmp/luci-proto-trusttunnel-0.1.0-r3.apk
+    rm /tmp/luci-proto-trusttunnel-0.1.0-r3.apk
     service rpcd restart
 
 i18n-ru:
 
-    wget --no-check-certificate -O /tmp/luci-i18n-trusttunnel-ru-0.1.0-r2.apk https://github.com/gSpotx2f/packages-openwrt/raw/master/25.12/luci-i18n-trusttunnel-ru-0.1.0-r2.apk
-    apk --allow-untrusted add /tmp/luci-i18n-trusttunnel-ru-0.1.0-r2.apk
-    rm /tmp/luci-i18n-trusttunnel-ru-0.1.0-r2.apk
+    wget --no-check-certificate -O /tmp/luci-i18n-trusttunnel-ru-0.1.0-r3.apk https://github.com/gSpotx2f/packages-openwrt/raw/master/25.12/luci-i18n-trusttunnel-ru-0.1.0-r3.apk
+    apk --allow-untrusted add /tmp/luci-i18n-trusttunnel-ru-0.1.0-r3.apk
+    rm /tmp/luci-i18n-trusttunnel-ru-0.1.0-r3.apk
 
 **OpenWrt 24.10:**
 
     opkg update
-    wget --no-check-certificate -O /tmp/trusttunnel-netifd-script_0.1.0-r2_all.ipk https://github.com/gSpotx2f/packages-openwrt/raw/master/24.10/trusttunnel-netifd-script_0.1.0-r2_all.ipk
-    opkg install /tmp/trusttunnel-netifd-script_0.1.0-r2_all.ipk
-    rm /tmp/trusttunnel-netifd-script_0.1.0-r2_all.ipk
+    wget --no-check-certificate -O /tmp/trusttunnel-netifd-script_0.1.0-r3_all.ipk https://github.com/gSpotx2f/packages-openwrt/raw/master/24.10/trusttunnel-netifd-script_0.1.0-r3_all.ipk
+    opkg install /tmp/trusttunnel-netifd-script_0.1.0-r3_all.ipk
+    rm /tmp/trusttunnel-netifd-script_0.1.0-r3_all.ipk
     service network restart
 
-    wget --no-check-certificate -O /tmp/luci-proto-trusttunnel_0.1.0-r2_all.ipk https://github.com/gSpotx2f/packages-openwrt/raw/master/24.10/luci-proto-trusttunnel_0.1.0-r2_all.ipk
-    opkg install /tmp/luci-proto-trusttunnel_0.1.0-r2_all.ipk
-    rm /tmp/luci-proto-trusttunnel_0.1.0-r2_all.ipk
+    wget --no-check-certificate -O /tmp/luci-proto-trusttunnel_0.1.0-r3_all.ipk https://github.com/gSpotx2f/packages-openwrt/raw/master/24.10/luci-proto-trusttunnel_0.1.0-r3_all.ipk
+    opkg install /tmp/luci-proto-trusttunnel_0.1.0-r3_all.ipk
+    rm /tmp/luci-proto-trusttunnel_0.1.0-r3_all.ipk
     service rpcd restart
 
 i18n-ru:
 
-    wget --no-check-certificate -O /tmp/luci-i18n-trusttunnel-ru_0.1.0-r2_all.ipk https://github.com/gSpotx2f/packages-openwrt/raw/master/24.10/luci-i18n-trusttunnel-ru_0.1.0-r2_all.ipk
-    opkg install /tmp/luci-i18n-trusttunnel-ru_0.1.0-r2_all.ipk
-    rm /tmp/luci-i18n-trusttunnel-ru_0.1.0-r2_all.ipk
+    wget --no-check-certificate -O /tmp/luci-i18n-trusttunnel-ru_0.1.0-r3_all.ipk https://github.com/gSpotx2f/packages-openwrt/raw/master/24.10/luci-i18n-trusttunnel-ru_0.1.0-r3_all.ipk
+    opkg install /tmp/luci-i18n-trusttunnel-ru_0.1.0-r3_all.ipk
+    rm /tmp/luci-i18n-trusttunnel-ru_0.1.0-r3_all.ipk
 
 ## Screenshots:
 

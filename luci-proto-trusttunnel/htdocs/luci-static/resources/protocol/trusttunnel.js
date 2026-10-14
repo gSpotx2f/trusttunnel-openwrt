@@ -1237,7 +1237,7 @@ return network.registerProtocol('trusttunnel', {
 			  _('Here, you can import TrustTunnel client settings from a deeplink URI (<code>tt://...</code>) or the contents of a TOML configuration file.'));
 
 		o = s.taboption('import', form.TextValue, 'import_config', _('URI or TOML configuration'),
-			_('Supports a deeplink TrustTunnel URI (tt://...) or TOML configuration file content.'));
+			_('Supports a deeplink TrustTunnel URI (<code>tt://...</code>) or TOML configuration file content.'));
 		o.rows        = 20;
 		o.monospace   = true;
 		o.placeholder = _('Paste supplied TrustTunnel URI (tt://...) or TOML configuration…');

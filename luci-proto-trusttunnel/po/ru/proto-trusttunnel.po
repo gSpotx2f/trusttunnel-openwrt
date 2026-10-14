@@ -345,10 +345,10 @@ msgstr "Пропустить верификацию"
 
 #: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1383
 msgid ""
-"Supports a deeplink TrustTunnel URI (tt://...) or TOML configuration file "
+"Supports a deeplink TrustTunnel URI (<code>tt://...</code>) or TOML configuration file "
 "content."
 msgstr ""
-"Поддерживается TrustTunnel URI (tt://...) или содержимое конфигурационного "
+"Поддерживается TrustTunnel URI (<code>tt://...</code>) или содержимое конфигурационного "
 "файла TOML."
 
 #: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1269

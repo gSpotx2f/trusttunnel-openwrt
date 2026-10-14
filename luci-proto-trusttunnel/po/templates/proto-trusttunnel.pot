@@ -283,7 +283,7 @@ msgstr ""
 
 #: ../../htdocs/luci-static/resources/protocol/trusttunnel.js:1383
 msgid ""
-"Supports a deeplink TrustTunnel URI (tt://...) or TOML configuration file "
+"Supports a deeplink TrustTunnel URI (<code>tt://...</code>) or TOML configuration file "
 "content."
 msgstr ""
 
