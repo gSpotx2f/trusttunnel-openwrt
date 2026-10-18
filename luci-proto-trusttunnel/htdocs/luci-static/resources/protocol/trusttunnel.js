@@ -760,8 +760,8 @@ function checkConfig(config) {
 		loop:
 		for (let [k, v] of Object.entries(o)) {
 			if (v.required && v.value === null) {
-				error = _('required setting "%s%s" is missing').format(
-					t ? (t + '.') : '', k);
+				error = new Error(_('required setting "%s%s" is missing').format(
+					t ? (t + '.') : '', k));
 				break;
 			};
 
@@ -771,8 +771,8 @@ function checkConfig(config) {
 
 			if (v.expect && v.value !== null) {
 				if (!v.expect.has(v.value)) {
-					error = _('setting "%s%s" must contain one of the following values: <b>%s</b>').format(
-						t ? (t + '.') : '', k, Array.from(v.expect.keys()).join(', '));
+					error = new Error(_('setting "%s%s" must contain one of the following values: <b>%s</b>').format(
+						t ? (t + '.') : '', k, Array.from(v.expect.keys()).join(', ')));
 					break;
 				};
 			} else {
@@ -784,8 +784,8 @@ function checkConfig(config) {
 						if (v.value !== null && typeof v.validator == 'function') {
 							for (let i of v.value) {
 								if (!v.validator(i)) {
-									error = _('setting "%s%s" is invalid').format(
-										t ? (t + '.') : '', k);
+									error = new Error(_('setting "%s%s" is invalid').format(
+										t ? (t + '.') : '', k));
 									break loop;
 								};
 							};
@@ -794,21 +794,21 @@ function checkConfig(config) {
 					;;
 					case 'uint':
 						if (v.value !== null && !stubValidator.apply('uinteger', v.value)) {
-							error = _('setting "%s%s" must be a valid uinteger value').format(
-								t ? (t + '.') : '', k);
+							error = new Error(_('setting "%s%s" must be a valid uinteger value').format(
+								t ? (t + '.') : '', k));
 							break loop;
 						};
 					case 'ufloat':
 						if (v.value !== null && !stubValidator.apply('ufloat', v.value)) {
-							error = _('setting "%s%s" must be a valid ufloat value').format(
-								t ? (t + '.') : '', k);
+							error = new Error(_('setting "%s%s" must be a valid ufloat value').format(
+								t ? (t + '.') : '', k));
 							break loop;
 						};
 					;;
 					default:
 						if (v.value !== null && v.value !== v.default && typeof v.validator == 'function' && !v.validator(v.value)) {
-							error = _('setting "%s%s" is invalid').format(
-										t ? (t + '.') : '', k);
+							error = new Error(_('setting "%s%s" is invalid').format(
+										t ? (t + '.') : '', k));
 							break loop;
 						};
 					;;
@@ -843,7 +843,7 @@ function setConfig(data) {
 				throw new SyntaxError(_('invalid URI'));
 			}
 		} catch (err) {
-			error = _('URI parsing error: %s').format(err);
+			error = new Error(_('URI parsing error: %s').format(err.message));
 		};
 	} else {
 		config = parseConfigData(lines);
@@ -885,7 +885,7 @@ return network.registerProtocol('trusttunnel', {
 		return (network.getIfnameOf(ifname) == this.getIfname());
 	},
 
-	showErrorMessage(elem, error) {
+	showErrorMessage(elem, msg) {
 		let errorElem = document.getElementById(`import-error-${this.sid}`);
 		if (!errorElem) {
 			errorElem = E('div', {
@@ -896,7 +896,7 @@ return network.registerProtocol('trusttunnel', {
 			elem.after(errorElem);
 		};
 		errorElem.style.display = 'block';
-		errorElem.innerHTML     = error;
+		errorElem.innerHTML     = msg;
 	},
 
 	hideErrorMessage() {
@@ -1004,7 +1004,8 @@ return network.registerProtocol('trusttunnel', {
 		let error  = r.error;
 
 		if (error !== null) {
-			this.showErrorMessage(textareaElem, _('Cannot parse configuration: %s').format(error));
+			this.showErrorMessage(
+				textareaElem, _('Cannot parse configuration: %s').format(error.message));
 			return;
 		};
 

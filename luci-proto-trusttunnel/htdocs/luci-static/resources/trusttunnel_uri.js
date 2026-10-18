@@ -145,6 +145,7 @@ function readAsn1Length(data, offset) {
 	return [length, offset + 1 + numBytes];
 };
 
+
 function splitDerCerts(data) {
 	const certs = [];
 	let offset  = 0;
@@ -219,13 +220,13 @@ function base64urlToBytes(str) {
 // --- TLS varint decoding (RFC 9000 §16) ---
 function readVarint(buf, offset) {
 	if (offset >= buf.length) {
-		throw new Error('Unexpected end of buffer reading varint');
+		throw new Error('unexpected end of buffer reading varint');
 	};
 	let first  = buf[offset];
 	let prefix = first >> 6;
 	let len = 1 << prefix; // 1, 2, 4, or 8 bytes
 	if (offset + len > buf.length) {
-		throw new Error('Unexpected end of buffer reading varint');
+		throw new Error('unexpected end of buffer reading varint');
 	};
 	let value = first & 0x3f;
 	for (let i = 1; i < len; i++) {
@@ -356,16 +357,16 @@ function parseTLV(bytes) {
 
 	// Validate required fields
 	if (!config.hostname) {
-		throw new Error('Missing required field: hostname');
+		throw new Error('missing required field: hostname');
 	};
 	if (config.addresses.length === 0) {
-		throw new Error('Missing required field: addresses');
+		throw new Error('missing required field: addresses');
 	};
 	if (!config.username) {
-		throw new Error('Missing required field: username');
+		throw new Error('missing required field: username');
 	};
 	if (!config.password) {
-		throw new Error('Missing required field: password');
+		throw new Error('missing required field: password');
 	};
 
 	return config;
