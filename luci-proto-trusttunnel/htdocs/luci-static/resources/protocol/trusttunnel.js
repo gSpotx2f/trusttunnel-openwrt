@@ -533,8 +533,6 @@ function newTTClientConfig() {
 					default  : 0,
 					value    : null,
 				},
-				// Not used in OpenWrt
-				/*
 				included_routes: {
 					validator: v => stubValidator.apply('cidr', v),
 					expect   : null,
@@ -548,6 +546,8 @@ function newTTClientConfig() {
 					default  : [],
 					value    : null,
 				},
+				// Not used in OpenWrt
+				/*
 				excluded_routes: {
 					validator: v => stubValidator.apply('cidr', v),
 					expect   : null,
