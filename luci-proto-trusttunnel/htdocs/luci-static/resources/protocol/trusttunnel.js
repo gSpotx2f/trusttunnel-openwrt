@@ -1195,7 +1195,6 @@ return network.registerProtocol('trusttunnel', {
 				_('DNS-over-HTTPS'), _('DNS-over-QUIC'), _('DNS stamp')
 			)
 		);
-		o.rmempty  = false;
 		o.validate = validateDNSUpstreams;
 
 		// killswitch_enabled
