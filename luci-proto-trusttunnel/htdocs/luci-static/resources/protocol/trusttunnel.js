@@ -1232,7 +1232,7 @@ return network.registerProtocol('trusttunnel', {
 		o.value('info');
 		o.value('debug');
 		o.value('trace');
-		o.default = 'warn';
+		o.default = 'error';
 
 		s.tab('import', _('Import configuration'),
 			  _('Here, you can import TrustTunnel client settings from a deeplink URI (<code>tt://...</code>) or the contents of a TOML configuration file.'));
