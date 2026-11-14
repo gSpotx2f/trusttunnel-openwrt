@@ -12,12 +12,22 @@ proto_cmd="$6"
 ### Exported with "proto_export"
 included_routes="$INCLUDED_ROUTES"
 
+kill_attempts=4
 proto_pid=
 
 trap_func() {
-	if [ -n "$proto_pid" -a -e "/proc/${proto_pid}" ]; then
-		kill $proto_pid
-	fi
+	local _i=0
+	while [ $_i -lt $kill_attempts ]
+	do
+		if [ -n "$proto_pid" -a -e "/proc/${proto_pid}" ]; then
+			kill $proto_pid
+		else
+			exit 0
+		fi
+		_i=$((_i + 1))
+		sleep 1
+	done
+	kill -s KILL $proto_pid
 	exit 0
 }
 
