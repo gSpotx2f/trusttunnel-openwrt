@@ -40,11 +40,13 @@ proto_trusttunnel_init_config() {
 	proto_config_add_array "exclusions"
 	proto_config_add_string "hostname"
 	proto_config_add_array "addresses"
+	proto_config_add_string "name"
 	proto_config_add_string "custom_sni"
 	proto_config_add_string "has_ipv6"
 	proto_config_add_string "username"
 	proto_config_add_string "password"
 	proto_config_add_string "client_random"
+	proto_config_add_string "client_random_auth_key"
 	proto_config_add_string "skip_verification"
 	proto_config_add_string "upstream_protocol"
 	proto_config_add_string "tls_profile"
@@ -78,11 +80,13 @@ proto_trusttunnel_setup() {
 	local exclusions
 	local hostname
 	local addresses
+	local name
 	local custom_sni
 	local has_ipv6
 	local username
 	local password
 	local client_random
+	local client_random_auth_key
 	local skip_verification
 	local upstream_protocol
 	local tls_profile
@@ -107,11 +111,13 @@ proto_trusttunnel_setup() {
 		exclusions_preresolve_max_queries \
 		exclusions_scannable_ports \
 		hostname \
+		name \
 		custom_sni \
 		has_ipv6 \
 		username \
 		password \
 		client_random \
+		client_random_auth_key \
 		skip_verification \
 		upstream_protocol \
 		tls_profile \
@@ -161,12 +167,14 @@ proto_trusttunnel_setup() {
 	[ -n "$username" ] && { printf "username = \"%s\"\n" "$username" >> "$tt_cfg"; }
 	[ -n "$password" ] && { printf "password = \"%s\"\n" "$password" >> "$tt_cfg"; }
 	[ -n "$hostname" ] && { printf "hostname = \"%s\"\n" "$hostname" >> "$tt_cfg"; }
+	[ -n "$name" ] && { printf "name = \"%s\"\n" "$name" >> "$tt_cfg"; }
 	[ -n "$upstream_protocol" ] || upstream_protocol="http2"
 	printf "upstream_protocol = \"%s\"\n" "$upstream_protocol" >> "$tt_cfg"
 	[ -n "$skip_verification" ] && { printf "skip_verification = %s\n" $(toml_bool_from_string "$skip_verification") >> "$tt_cfg"; }
 	[ -n "$endpoint_cert" ] && { printf "certificate = \"\"\"\n%s\n\"\"\"\n" "$endpoint_cert" >> "$tt_cfg"; }
 	[ -n "$custom_sni" ] && { printf "custom_sni = \"%s\"\n" "$custom_sni" >> "$tt_cfg"; }
 	[ -n "$client_random" ] && { printf "client_random = \"%s\"\n" "$client_random" >> "$tt_cfg"; }
+	[ -n "$client_random_auth_key" ] && { printf "client_random_auth_key = \"%s\"\n" "$client_random_auth_key" >> "$tt_cfg"; }
 	[ -n "$tls_profile" ] && { printf "tls_profile = \"%s\"\n" "$tls_profile" >> "$tt_cfg"; }
 	[ -n "$anti_dpi" ] && { printf "anti_dpi = %s\n" $(toml_bool_from_string "$anti_dpi") >> "$tt_cfg"; }
 	[ -n "$has_ipv6" ] && { printf "has_ipv6 = %s\n" $(toml_bool_from_string "$has_ipv6") >> "$tt_cfg"; }

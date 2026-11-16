@@ -334,6 +334,18 @@ function newTTClientConfig() {
 					default  : '',
 					value    : null,
 				},
+				name: {
+					validator: null,
+					expect   : null,
+					type     : 'string',
+					required : false,
+					nonempty : false,
+					uri      : 'name',
+					disabled : false,
+					uci      : 'name',
+					default  : '',
+					value    : null,
+				},
 				custom_sni: {
 					validator: v => stubValidator.apply('hostname', v),
 					expect   : null,
@@ -355,6 +367,18 @@ function newTTClientConfig() {
 					uri      : 'client_random_prefix',
 					disabled : false,
 					uci      : 'client_random',
+					default  : '',
+					value    : null,
+				},
+				client_random_auth_key: {
+					validator: v => stubValidator.apply('hexstring', v),
+					expect   : null,
+					type     : 'string',
+					required : false,
+					nonempty : false,
+					uri      : 'client_random_auth_key',
+					disabled : false,
+					uci      : 'client_random_auth_key',
 					default  : '',
 					value    : null,
 				},
@@ -384,7 +408,7 @@ function newTTClientConfig() {
 				},
 				tls_profile: {
 					validator: null,
-					expect   : new Set([ 'default', 'chrome', 'firefox', 'safari', 'okhttp', 'openssl' ]),
+					expect   : new Set([ 'boringssl', 'chrome', 'firefox', 'safari', 'okhttp', 'openssl' ]),
 					type     : 'string',
 					required : false,
 					nonempty : false,
@@ -1043,6 +1067,11 @@ return network.registerProtocol('trusttunnel', {
 		o.rmempty  = false;
 		o.datatype = 'hostname';
 
+		// name
+		o = s.taboption('general', form.Value, 'name', _('Server name'),
+			_('Human-readable server display name.'));
+		o.datatype = 'string';
+
 		// upstream_protocol
 		o = s.taboption('general', form.ListValue, 'upstream_protocol', _('Upstream protocol'),
 			_(' Protocol to be used to communicate with the endpoint.'));
@@ -1077,7 +1106,7 @@ return network.registerProtocol('trusttunnel', {
 		// tls_profile
 		o = s.taboption('general', form.ListValue, 'tls_profile', _('TLS profile'),
 			_('TLS ClientHello fingerprint to mimic.'));
-		o.value('default', _('no mimicry'));
+		o.value('boringssl', _('no mimicry'));
 		o.value('chrome');
 		o.value('firefox');
 		o.value('safari');
@@ -1095,6 +1124,11 @@ return network.registerProtocol('trusttunnel', {
 			_('TLS client random prefix and mask (hex string, format: prefix[/mask]).'));
 		o.maxlength = 64;
 		o.validate  = validateClientRandom;
+
+		// client_random_auth_key
+		o = s.taboption('general', form.Value, 'client_random_auth_key', _('Client random auth key'),
+			_('TLS client random auth key. When set, part of <code>client_random</code> is derived from this key, the SNI, and other random bytes via HKDF+AES. Takes priority over <code>client_random</code>.'));
+		o.datatype = 'hexstring';
 
 		// anti_dpi
 		o = s.taboption('general', form.Flag, 'anti_dpi', _('Anti DPI'),

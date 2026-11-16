@@ -5,7 +5,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=trusttunnel-netifd-script
-PKG_VERSION:=0.1.4
+PKG_VERSION:=0.2.0
 PKG_RELEASE:=1
 PKG_MAINTAINER:=gSpot <https://github.com/gSpotx2f/trusttunnel-openwrt>
 
